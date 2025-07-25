@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite';
-
-export default defineConfig({
-  root: '.', // index.html ka path
-  server: {
-    port: 3000, // optional
-  }
-});
+export default {
+  root: 'src',
+  build: {
+    outDir: '../dist',
+    emptyOutDir: true
+  },
+  publicDir: '../public'
+};

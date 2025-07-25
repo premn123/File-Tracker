@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Office File Tracker</title>
+  
+  <script type="module" crossorigin src="/assets/index-55b1c0d8.js"></script>
+  <link rel="stylesheet" href="/assets/index-1c5f55e6.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Office File Tracker</h1>
+      <nav>
+        <a href="/received-closed.html" class="nav-btn nav-btn-active">Received/Closed Files</a>
+      </nav>
+    </header>
+
+    <section class="controls">
+      <input type="text" id="searchBar" placeholder="Search files..." />
+      <button id="refreshBtn" title="Refresh Table">&#x21bb;</button>
+    </section>
+
+    <section class="add-form">
+      <h2>Add New File</h2>
+      <form id="fileForm">
+        <select id="fileType" required>
+          <option value="">Select File Type</option>
+          <option value="Case File UR-37">Case File UR-37</option>
+          <option value="Case File UR-36">Case File UR-36</option>
+          <option value="General corr.">General corr. court case</option>
+          <option value="Court case">Court case</option>
+          <option value="Gen. Corr. UR-Monthly report">Gen. Corr. UR-36</option>
+          <option value="Appeal and Revision">Appeal and Revision</option>
+        </select>
+
+        <select id="fileNameDropdown" style="display:none;">
+          <option value="">Select Existing File Name</option>
+        </select>
+
+        <input type="text" id="fileName" placeholder="Or Enter New File Name" />
+
+        <input type="text" id="sentBy" placeholder="Sent By (Your Name)" required />
+        <input type="text" id="givenTo" placeholder="Given To (Name/Section)" required />
+        <input type="date" id="dateGiven" required />
+        <input type="text" id="remarks" placeholder="Remarks (optional)" />
+        
+        <select id="status" required>
+          <option value="Pending">Pending</option>
+          <option value="Received">Received</option>
+          <option value="Forwarded">Forwarded</option>
+          <option value="Closed">Closed</option>
+        </select>
+
+        <button type="submit">Add File</button>
+      </form>
+    </section>
+
+    <section class="table-section">
+      <h2>Tracked Files</h2>
+      <div class="table-responsive">
+        <table id="filesTable">
+          <thead>
+            <tr>
+              <th>File Type</th>
+              <th>File Name</th>
+              <th>Sent By</th>
+              <th>Given To</th>
+              <th>Date Given</th>
+              <th>Remarks</th>
+              <th>Status</th>
+              <th>Update</th>
+                <th>History</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Modal for History -->
+    <div id="historyModal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close" id="closeHistoryModal">&times;</span>
+        <h3>File History</h3>
+        <div id="historyContent"></div>
+      </div>
+    </div>
+
+    <!-- Modal for Status Update -->
+    <div id="statusModal" class="modal" style="display:none;" data-file-id="">
+      <div class="modal-content">
+        <span class="close" id="closeStatusModal">&times;</span>
+        <h3>Update File Status</h3>
+        <form id="statusForm">
+          <label for="updateStatus">Status:</label>
+          <select id="updateStatus" required>
+            <option value="Pending">Pending</option>
+            <option value="Received">Received</option>
+            <option value="Forwarded">Forwarded</option>
+            <option value="Closed">Closed</option>
+          </select>
+
+          <label for="updateGivenTo">Given To:</label>
+          <input type="text" id="updateGivenTo" required />
+
+          <label for="updateRemarks">Remarks:</label>
+          <input type="text" id="updateRemarks" />
+          <button type="submit">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+</html>
